@@ -23,4 +23,35 @@ public class Input {
         return (result.equals("y") || result.equals("yes"));
     }
 
+    public int getInt(int min, int max){
+
+        int userInput = Integer.parseInt(this.getString("Give me a number between " + min + " and " + max));
+
+        if(userInput < min || userInput > max){
+            System.err.println("Number our of range");
+            getInt(min, max);
+        }
+
+        return userInput;
+    }
+
+    public int getInt(){
+        return Integer.parseInt(this.getString("Give me a number"));
+    }
+
+    public double getDouble(double min, double max){
+        double userInput = Double.parseDouble(this.getString("Give me a decimal number between " + min + " and " + max));
+
+        if(userInput < min || userInput > max){
+            System.err.println("Decimal number out of range");
+            userInput = getDouble(min, max);
+        }
+
+        return userInput;
+    }
+
+    public double getDouble(){
+        return Double.parseDouble(this.getString("Give me a decimal number"));
+    }
+
 }
