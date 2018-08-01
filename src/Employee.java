@@ -1,7 +1,6 @@
-import util.Input;
+
 
 public class Employee extends Person {
-
 
     public void doWork(){
         System.out.println("I'm working");

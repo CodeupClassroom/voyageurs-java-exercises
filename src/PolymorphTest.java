@@ -1,3 +1,4 @@
+
 public class PolymorphTest {
 
     public static void main(String[] args) {
@@ -17,6 +18,17 @@ public class PolymorphTest {
         System.out.println(batman.getName());
         System.out.println(batman.getSecretID());
 
+        Employee one = new Employee();
+        Employee mmgr = new Manager();
+
+        Employee[] employees = new Employee[2];
+
+        employees[0] = one;
+        employees[1] = mmgr;
+
+        for (Employee emp: employees){
+            emp.doWork();
+        }
 
 
     }
