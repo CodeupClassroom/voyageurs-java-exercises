@@ -1,19 +1,19 @@
 package shapes;
 
-public class Square extends Rectangle {
+public class Square extends Quadrilateral implements Measurable{
 
-    public Square(double side) {
-        super(side, side);
+    public Square(double l) {
+        super(l, l);
     }
 
     @Override
-    public double getArea() {
-        return length * length;
+    void setLength(double length) {
+        this.length = this.width = length;
     }
 
     @Override
-    public double getPerimeter() {
-        return 4 * length;
+    void setWidth(double width) {
+        this.length = this.width = width;
     }
 
 }
