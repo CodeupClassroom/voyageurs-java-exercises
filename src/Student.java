@@ -29,4 +29,8 @@ public class Student {
         return total / grades.size();
     }
 
+    public ArrayList<Integer> getGrades(){
+        return this.grades;
+    }
+
 }
