@@ -16,15 +16,34 @@ public class GradesApplication {
         HashMap<String, Student> students = populateData();
         System.out.println(returnWelcomeMessage(students));
         input = new Input();
-        boolean willContinue = true;
+        boolean willContinue;
+
         do {
-            String choice = input.getString("What student would you like to see more information on?");
 
-            //
+            while(true){
 
+                String choice = input.getString("What student would you like to see more information on?");
+
+                if(!students.containsKey(choice)){
+                    System.out.println("Sorry, no student found with the gihub username of " + choice);
+                    System.out.println("Would you like to see another student?");
+
+                    if(!input.yesNo()){
+                        break;
+                    }
+
+                } else {
+//                    If the user key exists
+                    System.out.printf("Name: %s - Gihub Username: %s\n" +
+                            "Current Average: %f \n", students.get(choice).getName(), choice, students.get(choice).getGradeAverage());
+                }
+            }
 
             System.out.println("Will you continue?");
             willContinue = input.yesNo();
+            if(!willContinue){
+                System.out.println("Goodbye, and have a wonderful day!");
+            }
         } while(willContinue);
 
 
@@ -45,19 +64,19 @@ public class GradesApplication {
 
         Student s1 = new Student("Sally");
         s1.addGrade(80);
-        s1.addGrade(100);
+        s1.addGrade(70);
         s1.addGrade(80);
-        s1.addGrade(100);
+        s1.addGrade(50);
 
         Student s2 = new Student("Fred");
         s2.addGrade(80);
-        s2.addGrade(100);
+        s2.addGrade(40);
         s2.addGrade(80);
-        s2.addGrade(100);
+        s2.addGrade(30);
 
         Student s3 = new Student("Bob");
         s3.addGrade(80);
-        s3.addGrade(100);
+        s3.addGrade(20);
         s3.addGrade(80);
         s3.addGrade(100);
 

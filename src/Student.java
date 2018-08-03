@@ -29,12 +29,4 @@ public class Student {
         return total / grades.size();
     }
 
-    public static void main(String[] args) {
-        Student student = new Student("Sally");
-        student.addGrade(80);
-        student.addGrade(100);
-        System.out.println(student.getGradeAverage());
-    }
-
-
 }
