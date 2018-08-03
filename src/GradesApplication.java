@@ -17,26 +17,40 @@ public class GradesApplication {
         System.out.println(returnWelcomeMessage(students));
         input = new Input();
         boolean willContinue;
+        double classAverage = 0;
 
         do {
 
             while(true){
 
-                String choice = input.getString("What student would you like to see more information on?");
+                String choice = input.getString("Provide a student's id or a command");
 
-                if(!students.containsKey(choice)){
-                    System.out.println("Sorry, no student found with the gihub username of " + choice);
-                    System.out.println("Would you like to see another student?");
-
-                    if(!input.yesNo()){
-                        break;
+                if(choice.toUpperCase().equals("A")){
+//                    Shows all the students, all the grades
+                    for (String githubUsername: students.keySet()){
+                        Student currentStudent = students.get(githubUsername);
+                        System.out.println("\nName: "+ currentStudent.getName());
+                        for (Integer grade: currentStudent.getGrades()) {
+                            System.out.printf("Grade: %d\n", grade);
+                        }
+                        classAverage += currentStudent.getGradeAverage();
                     }
 
+                    System.out.println("\nClass average grade: " + (classAverage / students.size()) );
+
+                }else if(!students.containsKey(choice)){
+                    System.out.println("Sorry, no student found with the gihub username of " + choice);
                 } else {
 //                    If the user key exists
                     System.out.printf("Name: %s - Gihub Username: %s\n" +
                             "Current Average: %f \n", students.get(choice).getName(), choice, students.get(choice).getGradeAverage());
                 }
+                System.out.println();
+                System.out.println("Would you like to see another student?");
+                if(!input.yesNo()){
+                    break;
+                }
+
             }
 
             System.out.println("Will you continue?");
@@ -45,7 +59,6 @@ public class GradesApplication {
                 System.out.println("Goodbye, and have a wonderful day!");
             }
         } while(willContinue);
-
 
     }
 
@@ -56,6 +69,7 @@ public class GradesApplication {
         for (String key : students.keySet()) {
             output += "|" + key + "| ";
         }
+        output += "\n\n == Another cool commands: A - Shows all the students and all grades with a class average ==\n";
         return output.trim();
     }
 
