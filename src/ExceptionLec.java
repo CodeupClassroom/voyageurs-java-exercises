@@ -1,7 +1,14 @@
 import util.Input;
 
-public class EsxceptionLec {
-    public static void main(String[] args) {
+public class ExceptionLec {
+
+    static Input input = new Input();
+
+    public static void main(String[] args) throws Exception {
+
+        String answer = getIndentationPreference();
+        System.out.println(answer);
+
         int[] numbers = {1, 2, 3};
 
         System.out.println("before the exception");
@@ -20,7 +27,7 @@ public class EsxceptionLec {
 
         try {
 //            System.out.println( 5 / 0 );
-            int i = new Input().getInt();
+            int i = input.getInt();
             System.out.println(i);
         } catch(ArrayIndexOutOfBoundsException e){
             e.printStackTrace();
@@ -34,4 +41,21 @@ public class EsxceptionLec {
         }
 
     }
+
+    // Unchecked exception
+    public static String getIndentationPreference() throws Exception {
+
+        System.out.print("What type of indentation do you prefer?");
+        String indentationPreference = input.getString();
+
+        if(indentationPreference.equals("tabs")){
+            WrongIndentationTypeException myException;
+            myException = new WrongIndentationTypeException("Spaces are better");
+            throw myException;
+        }
+
+        return indentationPreference;
+    }
+
+
 }
