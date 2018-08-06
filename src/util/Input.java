@@ -36,7 +36,18 @@ public class Input {
     }
 
     public int getInt(){
-        return Integer.parseInt(this.getString("Give me a number"));
+
+        String userInput = this.getString("Give me a number");
+        int number;
+
+        try{
+            number = Integer.valueOf(userInput);
+        } catch (NumberFormatException e){
+            System.out.println("This is not a valid number");
+            number = getInt();
+        }
+
+        return number;
     }
 
     public double getDouble(double min, double max){
@@ -51,7 +62,18 @@ public class Input {
     }
 
     public double getDouble(){
-        return Double.parseDouble(this.getString("Give me a decimal number"));
+
+        String userInput = this.getString("Give me a decimal number");
+        double number;
+
+        try{
+            number = Double.valueOf(userInput);
+        } catch (NumberFormatException e){
+            System.out.println("This is not a valid decimal number");
+            number = getDouble();
+        }
+
+        return number;
     }
 
 }
